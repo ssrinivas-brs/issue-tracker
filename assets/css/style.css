@@ -130,6 +130,13 @@ header .navbar-brand img {
 img {
     max-width: 100%;
 }
+header h1 {
+    font: normal normal 600 18px/28px Oswald;
+    letter-spacing: 0.36px;
+    color: #191919;
+    text-transform: uppercase;
+    text-align: center;
+}
 
 header h3 {
     font: normal normal 600 18px/27px Oswald;

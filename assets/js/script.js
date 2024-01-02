@@ -1,12 +1,3 @@
-/** 
-Author:    Build Rise Shine with Nyros (BRS) 
-Created:   2023
-Library / Component: Script file
-Description: Rock Paper Scissor game logic
-(c) Copyright by BRS with Nyros. 
-**/
-
-// Init priority list, assigned to list and stories array
 const priorityList = ["Low", "Medium", "High"];
 const assignedToList = ["Edwin", "Tom", "Carl", "Jerome", "Carmelo"];
 let storyList = [];
@@ -18,6 +9,7 @@ let chathams_blue = "#1A4B84";
 const description = document.getElementById("description");
 const assignedto = document.getElementById("assignedto");
 const priority = document.getElementById("priority");
+let title = document.getElementById('title');
 const storySubmitBtn = document.getElementById("storySubmitBtn");
 const storyCardList = document.getElementById("storyCardList");
 const descrptionLength = document.getElementById("descLength");
@@ -83,6 +75,7 @@ const updateList = (newStory, updatedList) => {
             ${issue.storyStatus === "open" ? "open" : "closed"}</span>
             </div>
             <div class="card-body">
+            <h4>Title : ${issue.title}</h4>
             <p class="text-start pb-1">Assigned to : ${
               assignedToList[issue.assignedTo]
             }</p>
@@ -126,6 +119,11 @@ initApp();
 // form validation
 const formValidate = (e) => {
   e.preventDefault();
+  if(title.value === ""){
+    alert("Please enter title");
+    title.focus();
+    return;
+  }
   if (description.value === "") {
     alert("Please enter description");
     description.focus();
@@ -151,12 +149,14 @@ const formValidate = (e) => {
     description: description.value,
     assignedTo: assignedto.value,
     priority: priority.value,
+    title: title.value,
     storyStatus: "open",
   };
   description.value = "";
   assignedto.value = "";
   priority.value = "";
   descrptionLength.innerHTML = "";
+  title.value = "";
   updateList(newStory, "");
 };
 
